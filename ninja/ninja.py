@@ -41,7 +41,11 @@ def update():
         if actor.x < -50:
             obstacles.remove(actor)
             score += 1
-
+  else:
+    if joystick.get_button(1)==1:
+      game_over = False
+      score = 0
+  
   if runner.y == 400 and (keyboard.up or joystick.get_button(1)==1 or joystick.get_axis(1) < -0.1):
     velocity_y = -15
     sounds.jump_sound.play()
