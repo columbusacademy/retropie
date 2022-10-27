@@ -2,9 +2,11 @@ import pgzrun
 import random
 import pygame
 
-
-joystick = pygame.joystick.Joystick(1) #Joystick 1 is the left side of our arcade
-joystick.init()
+try:
+    joystick = pygame.joystick.Joystick(1) #Joystick 1 is the left side of our arcade
+    joystick.init()
+except:
+    joystick = False
 
 #joystick.get_button(7)==1: #button 7 is the start button up top
 #joystick.get_button(1)==1 is the fire button or the button on top row just right of the joystick 1
@@ -12,7 +14,6 @@ joystick.init()
 #joystick.get_axis(0) < -0.1 Left
 #joystick.get_axis(1) > 0.1 Down
 #joystick.get_axis(1) < -0.1 Up
-
 
 WIDTH=800
 HEIGHT=600
@@ -57,16 +58,16 @@ def update():
     original_x = tank.x
     original_y = tank.y
 
-    if keyboard.left or joystick.get_axis(0) < -0.1:
+    if keyboard.left or (joystick and joystick.get_axis(0) < -0.1):
         tank.x = tank.x - 2
         tank.angle = 180
-    elif keyboard.right or joystick.get_axis(0) > 0.1:
+    elif keyboard.right or (joystick and joystick.get_axis(0) > 0.1):
         tank.x = tank.x + 2
         tank.angle = 0
-    elif keyboard.up or joystick.get_axis(1) < -0.1:
+    elif keyboard.up or (joystick and joystick.get_axis(1) < -0.1):
         tank.y = tank.y - 2
         tank.angle = 90
-    elif keyboard.down or joystick.get_axis(1) > 0.1:
+    elif keyboard.down or (joystick and joystick.get_axis(1) > 0.1):
         tank.y = tank.y + 2
         tank.angle = 270
 
@@ -80,7 +81,7 @@ def update():
 
     # This part is for the bullet
     if bullet_holdoff == 0:
-        if keyboard.space or joystick.get_button(1)==1:
+        if keyboard.space or (joystick and joystick.get_button(1)==1):
             bullet = Actor('bulletblue2')
             bullet.angle = tank.angle
             bullet.x = tank.x
@@ -190,4 +191,4 @@ def draw():
         for wall in walls:
             wall.draw()
 
-#pgzrun.go() # Must be last line
+pgzrun.go() # Must be last line
