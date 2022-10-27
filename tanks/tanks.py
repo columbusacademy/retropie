@@ -1,5 +1,6 @@
 import random
 import pygame
+import sys
 
 try:
     joystick = pygame.joystick.Joystick(1) #Joystick 1 is the left side of our arcade
@@ -52,6 +53,13 @@ game_over = False
 def update():
     global bullet_holdoff
     global game_over
+
+    if game_over:
+        if keyboard.space or (joystick and joystick.get_button(1)==1):
+            game_over = False
+
+    if keyboard.escape or (joystick and joystick.get_button(7)==1): #button 7 is the start button up top
+        sys.exit()
 
     # This part is for the tank
     original_x = tank.x
