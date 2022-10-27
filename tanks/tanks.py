@@ -1,4 +1,3 @@
-import pgzrun
 import random
 import pygame
 
@@ -191,4 +190,4 @@ def draw():
         for wall in walls:
             wall.draw()
 
-pgzrun.go() # Must be last line
+#pgzrun.go() # Must be last line
