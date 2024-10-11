@@ -1,2 +1,2 @@
-cd ~/pygames/nelson
+cd ~/retropie/nelson
 pgzrun nelson.py
