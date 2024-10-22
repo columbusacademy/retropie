@@ -1,2 +1,2 @@
 cd ~/retropie/nelson
-pgzrun nelson.py
+python3 nelson.py
