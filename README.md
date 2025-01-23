@@ -1,4 +1,4 @@
-# retropie
+# retropie blah blah blah
 This repository is a group of python projects for RetroPie arcade, upon Pull Request to 'main' branch, code will attempt to auto deploy to retropie arcade.
 
 This project is a learning experience in collabrative coding.
